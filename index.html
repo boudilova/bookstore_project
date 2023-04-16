@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--link rel="stylesheet" href="css/normalStyle.css"-->
+    <link rel="stylesheet"  href="css/styles_slider.css" />
+    <link rel="stylesheet"  href="css/styles_common.css" />
+    <link rel="stylesheet"  href="css/bookssection.css" />
+ 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+
+ <title>Bookshop web</title>
+</head>
+<body>
+  <header class="wrapper header_class">
+    <!--div class="wrapper header_class"-->
+         <span>Bookstore</span>
+        <div class ="header_links">
+            <ul>
+                <li>Books</li>
+                <li>Audiobooks</li>
+                <li>Stationery & gifts</li>
+                <li>blog</li>
+            </ul>   
+        </div>
+        <div class="header_pics">
+            <img src="img/user.svg" alt="user">
+            <img src="img/search.svg" alt="search">
+            <img src="img/shopbag.svg" alt="cart">
+        </div> 
+    <!--/div-->
+  </header>
+
+  <main>
+    
+    <div class="wrapper">
+      <div class="ABS">
+      <div class="slider">
+        <div class="slider__images"></div>
+        <div class="slider__dots"></div>   
+      </div>
+      <div class="rectangles">
+        <div class="violetRect">Change old book on new 
+          <img src="img/arrow.svg" alt="">
+        </div>
+        <div class="pinkRect">top 100 books 2022
+          <img src="img/arrow.svg" alt="">
+        </div>
+</div>
+    </div>
+  
+        <div id="books">
+
+            <!--div class="wrapper"-->
+            
+                <h1>Поиск по базе фильмов OMDB</h1>
+                <form class="searchForm">
+                  <div class="inputWrapper">
+                    <label for="searchInput">Поиск по названию:</label>
+                    <input id="searchInput" type="search" class="input" required />
+                  </div>
+               
+                
+                  <div class="inputWrapper">
+                    <label for="typeInput">Тип:</label>
+                    <select id="typeInput">
+                      <option value="">Выберите тип</option>
+                      <option value="movie">Фильм</option>
+                      <option value="series">Сериал</option>
+                    </select>
+                  </div>
+                  <div class="inputWrapper">
+                    <label for="yearInput">Год выпуска:</label>
+                    <input id="yearInput" type="number" />
+                  </div>
+                  <button type="submit">Поиск</button>
+                </form>
+                <hr />
+                <div class="resultWrapper">
+                  <h2>Результаты поиска</h2>
+                  <div class="resultOutput"></div>
+                </div>
+            
+        </div>
+    </div>
+  </main>
+<!---
+  <script src="src/script_slider.js"></script>
+  <script src="src/bookssection.js"></script>
+  <script src="src/index.js"></script>
+-->
+<script src="dist/main.js"></script>
+
+</body>
+</html>

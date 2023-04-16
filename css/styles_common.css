@@ -1,0 +1,86 @@
+/*body {
+    display: flex;
+    justify-content: center;
+  }
+  */
+header {
+    display: flex;
+    justify-content: space-between;
+    height: 116px;
+  }
+  
+.wrapper{
+    width: 1220px;
+}
+
+.header_class{
+    justify-self: center;
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    position: relative;
+    align-content: center;
+}
+
+.header_class span{
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;    
+}
+
+.header_pics{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    size-adjust: none;
+    
+}
+.header_class ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 12px;
+    letter-spacing: 0em;
+    text-align: left;
+    list-style-type: none;
+}
+
+.header_class li{
+    margin-right: 20px;
+}
+
+books{
+    display: flex;
+    flex-direction: row;
+}
+
+.ABS{
+    display: flex;
+    flex-direction: row;
+}
+.rectangles{
+    display:flex;
+    flex-direction: column;
+    width: 150px;
+    /*margin:20px 0 0 -50px;*/
+    justify-content: space-around;
+    z-index: 1;
+}
+
+.violetRect{
+    background-color: #9E98DC;
+    height:34%;
+    margin-left:-100px; 
+}
+
+.pinkRect{
+    background-color: #FF8FE6;
+    height:40%;
+    
+}
