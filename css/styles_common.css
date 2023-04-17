@@ -75,12 +75,34 @@ books{
 
 .violetRect{
     background-color: #9E98DC;
-    height:34%;
-    margin-left:-100px; 
+    height: 33%;
+    margin-left: -100px;
+    margin-right: 100px;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    text-transform: uppercase;
+    flex-direction: column;
 }
 
 .pinkRect{
     background-color: #FF8FE6;
     height:40%;
-    
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /*align-items: flex-end;*/
+    text-transform: uppercase;
 }

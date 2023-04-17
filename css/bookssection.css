@@ -66,3 +66,8 @@ body {
   color: #b8b8b8;
   margin-top: auto;
 }
+
+.bookItem{
+  display: flex;
+  flex-direction: row;
+}

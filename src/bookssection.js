@@ -16,10 +16,11 @@ function submitForm(e) {
   .then(data => {
     //console.log(data.Response);
     console.log(data);
+
   })
- 
+
   const params = new URLSearchParams();
-   params.append("apikey", apiKey);
+  params.append("apikey", apiKey);
   params.append("s", searchValue);
   params.append("type", typeValue);
   params.append("y", yearValue);
@@ -47,6 +48,37 @@ function submitForm(e) {
   })
 }
 
+
+  /*
+  const params = new URLSearchParams();
+  params.append("apikey", apiKey);
+  params.append("s", searchValue);
+  params.append("type", typeValue);
+  params.append("y", yearValue);
+
+  fetch(`${apiUrl}?${params}`)
+    .then(data => data.json())
+    .then(data => {
+      clearResultOutput();
+      const output = resultWrapper.querySelector(".resultOutput");
+      if (data.Response === "True") {
+        data.Search.forEach(film => {
+          const filmTemplate = `
+            <div class="filmItem">
+              <h3>${film.Title}</h3>
+              <img src=${film.Poster} alt="${film.Title}" />
+              <p class="filmItem_year">${film.Year}</p>
+            </div>
+          `;
+          output.innerHTML += filmTemplate;
+        });
+      } else {
+        output.innerHTML = '<p>По вашему запросу ничего не нашлось</p>';
+      }
+      showResultOutput();
+  })
+}
+*/
 function clearResultOutput() {
   resultWrapper.classList.remove("isShown");
   const output = resultWrapper.querySelector(".resultOutput");
