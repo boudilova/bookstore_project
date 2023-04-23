@@ -38,6 +38,11 @@ header {
     size-adjust: none;
     
 }
+.header_pics img{
+    max-height: 15px;
+    margin: 0 35px 0 35px;
+}
+
 .header_class ul{
     display: flex;
     flex-direction: row;
@@ -55,11 +60,30 @@ header {
     margin-right: 20px;
 }
 
-books{
+#books{
     display: flex;
     flex-direction: row;
 }
 
+.qList{
+    background-color: #EFEEF6;
+}
+
+.subjList{
+    margin-left: 100px;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #5C6A79;
+    list-style: none;
+}
+
+.subjList li{
+    padding:23px;
+}
 .ABS{
     display: flex;
     flex-direction: row;
