@@ -20,31 +20,26 @@ function onClickUl (e) {
   params.append("printType", "books");
   params.append("startIndex", 0);
   params.append("maxResults", 6);
-  params.append("langRestrict", 'en');
+  //params.append("langRestrict", 'en');
 
   fetch(`${apiUrl}?${params}`)
     .then(data => data.json())
     .then(data => {
-      //console.log(data);
-      //console.log(item[0]);
-      clearResultOutput();
+        clearResultOutput();
       const output = resultWrapper.querySelector(".resultOutput");
-      console.log(data);
-      //console.log(data.Response);
-      
-      //if (data.Response === "True") {
-        data.items.forEach(book => {
+          data.items.forEach(book => {
           console.log(book.id);
-         
+
+         console.log(book)
           const bookTemplate = `
             <div class="bookItem">
-              <img src=${book.volumeInfo.imageLinks.thumbnail} alt="${book.volumeInfo.title}" />
+              <img src=${checkImg(book.volumeInfo.imageLinks)} alt="${book.volumeInfo.title}" />
               <div class="bookInfo">
-              <span class="bookItem_auth">${book.volumeInfo.authors}</span>
-              <span class="bookItem_title">${book.volumeInfo.title}</span>
-              <span class="bookItem_avgrate">${book.averageRating}</span>
-              <span class="bookItem_rateCnt">${book.ratingsCount}</span>
-              <span class="bookItem_descr">${cropTitle(book.volumeInfo.description,150)}</span>
+              <span class="bookItem_auth">${checkAuthors(book.volumeInfo.authors)}</span>
+              <span class="bookItem_title">${checkItem(book.volumeInfo.title)}</span>
+              <span class="bookItem_avgrate">${checkRating(book.averageRating)}</span>
+              <span class="bookItem_rateCnt">${checkItem(book.ratingsCount)}</span>
+              <span class="bookItem_descr">${cropTitle(book.volumeInfo.description,100)}</span>
               <span class="bookItem_price">${checkItem(book.saleInfo.retailprice)}</span>
               </div>
             </div>
@@ -57,6 +52,37 @@ function onClickUl (e) {
     console.log(err);
 })
 }
+
+function checkImg(str){
+  console.log(str);
+  var res='';
+  if (typeof(str)=='undefined'){
+    console.log('rrr')
+    res='img/bg.png';
+   } else {
+  res=str.thumbnail;
+}
+   return res;
+}
+
+function checkRating(str){
+return str;
+}
+
+function checkAuthors(str){
+  var res="";
+  if(str!='undefined'){
+  //console.log(str);
+  str.forEach((author)=>{
+    if(res!=''){
+      res=res+',';
+    }
+    res=res+author;
+  //console.log(res);
+  })
+}
+  return res;
+};
 
 function checkItem(str) {
   if (typeof(str)=="undefined"){
