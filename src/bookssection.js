@@ -12,14 +12,23 @@ liEl.forEach((el)=> {el.addEventListener ("click",onClickUl)
 
 function onClickUl (e) {
  e.preventDefault();
- const q= this.textContent;
+  showBooks(e,0,6);
+}
 
+function showBooks(e,startIndex,maxResult){
+  
+  const q= this.textContent;
+  //const t = this.classList;
+ 
+  if (startIndex==0){
+    changeCategory (this)
+  }
   const params = new URLSearchParams();
   params.append("key", apiKey);
   params.append("q", "subject:"+ q );
   params.append("printType", "books");
-  params.append("startIndex", 0);
-  params.append("maxResults", 6);
+  params.append("startIndex", startIndex);
+  params.append("maxResults", maxResult);
   //params.append("langRestrict", 'en');
 
   fetch(`${apiUrl}?${params}`)
@@ -30,7 +39,7 @@ function onClickUl (e) {
           data.items.forEach(book => {
           console.log(book.id);
 
-         console.log(book)
+         //console.log(book)
           const bookTemplate = `
             <div class="bookItem">
               <img src=${checkImg(book.volumeInfo.imageLinks)} alt="${book.volumeInfo.title}" />
@@ -44,9 +53,9 @@ function onClickUl (e) {
               </div>
             </div>
           `;/**/
-          console.log(bookTemplate)
           output.innerHTML += bookTemplate;
         });
+     //const btn =     
      showResultOutput();
   }).catch((err) => {
     console.log(err);
@@ -54,10 +63,10 @@ function onClickUl (e) {
 }
 
 function checkImg(str){
-  console.log(str);
+  //console.log(str);
   var res='';
   if (typeof(str)=='undefined'){
-    console.log('rrr')
+    //console.log('rrr')
     res='img/bg.png';
    } else {
   res=str.thumbnail;
@@ -102,6 +111,15 @@ function cropTitle(str, size) {
     return title.substr(0, size) + "...";
   }
 }
+
+function changeCategory (obj) {
+  const category=obj.parentElement;
+  if (category.querySelector(".active") !=null){
+    category.querySelector(".active").classList.remove("active");
+   }
+  obj.classList.add("active");
+}
+
 function clearResultOutput() {
   resultWrapper.classList.remove("isShown");
   const output = resultWrapper.querySelector(".resultOutput");

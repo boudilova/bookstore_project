@@ -84,6 +84,12 @@ header {
 .subjList li{
     padding:23px;
 }
+
+ li.active{
+    font-style: italic;
+    color: black;
+}
+
 .ABS{
     display: flex;
     flex-direction: row;
