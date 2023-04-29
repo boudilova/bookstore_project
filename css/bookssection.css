@@ -39,23 +39,25 @@ body {
 }
 
 .resultWrapper.isShown {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .resultOutput {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  justify-content: flex-start;
+  justify-content: space-evenly;
 }
 
 
 .bookItem{
   /*width: calc(33% - 20px);*/
-  width: calc(30% - 20px);
+  width: calc(40% - 20px);
   
   padding: 5px;
-  margin: 30px 30px 30px 30px;
+  margin: 30px 20px 30px 30px;
   border: none;/*0px solid #b8b8b8;*/
   display: flex;
   flex-direction: row;
@@ -121,4 +123,23 @@ body {
   max-height: 327px;
   max-width: 212px;
   border-radius: 0px;
+}
+.btnMore{
+  display:none;
+}
+.btnMore.btnActive{
+  border: 1px solid #4C3DB2;
+  background-color: none;
+  align-self: center;
+  display:block
+}
+
+.btnCart{
+  border: 1px solid #4C3DB2;
+  background-color: none;
+  width:fit-content;
+  height:auto;
+  margin: 5px 0 0 0;
+  /*align-self: left;*/
+  display:block
 }
