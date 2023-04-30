@@ -59,12 +59,16 @@ function showBooks(e,obj){
               <span class="bookItem_rateCnt">${checkItem(book.ratingsCount)}</span>
               <span class="bookItem_descr">${cropTitle(book.volumeInfo.description,80)}</span>
               <span class="bookItem_price">${checkItem(book.saleInfo.retailprice)}</span>
-              <button class="btnCart">buy</button>
+              <button class="btnCart cart_${book.id}">buy</button>
               </div>
 
             </div>
           `;/**/
           output.innerHTML += bookTemplate;
+          btnCart=resultWrapper.querySelector(`.cart_${book.id}`)
+          btnCart.addEventListener ("click",onClickCartBtn);
+          /*()=> {console.log("listener");CheckCart(book.id); } , false);*/
+          console.log(btnCart);
         });
      //const btn = '<button class="moreButton"> more...</button>'    
      addButton();
@@ -129,26 +133,27 @@ function cropTitle(str, size) {
 
 function addButton(){
   const btn = resultWrapper.querySelector(".btnMore");
-  console.log(btn);
+  //console.log(btn);
   if (btn===null){
-    console.log('no button')
+    //console.log('no button')
     const btn = document.createElement("button");
     btn.textContent="Show next pack";
     resultWrapper.appendChild(btn); 
     btn.className="btnMore"  ;
     btn.classList.add("btnActive"); 
-    console.log(btn.classList);
+    //console.log(btn.classList);
     btn.addEventListener ("click",onClickBtn) ;  
     }
     else{
-      console.log('button exists')   
+      //console.log('button exists')   
       btn.classList.add("btnActive")  ;   
     }
     //btn.classList.add("btnActive")  ; 
    
   }
   
-   
+  
+  
 
 function onClickBtn (e) {
   //console.log(startIndex)
@@ -183,4 +188,20 @@ function showResultOutput() {
   //console.log('bshowResultOutput'+startIndex);
   resultWrapper.classList.add("isShown");
 
+}
+
+function onClickCartBtn(e){
+  e.preventDefault();
+  //check actions
+  //add to local storage
+  console.log("listen");
+  const id="231zxc";
+  localStorage.setItem("id","1");
+  console.log(localStorage.getItem(id));
+  //add to cart icon
+  //change btn status
+ 
+  //remove from ls
+  //remove from icon
+  //change btn status
 }
