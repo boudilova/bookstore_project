@@ -22,7 +22,7 @@ header {
     align-content: center;
 }
 
-.header_class span{
+.header_class h1{
     font-family: Montserrat;
     font-size: 24px;
     font-weight: 700;
@@ -42,7 +42,25 @@ header {
     max-height: 15px;
     margin: 0 35px 0 35px;
 }
-
+.shopandellipse{
+    display: block;
+}
+.redEllipse{
+    position: absolute;
+    /*font-size: px;*/
+    line-height: 10px;
+    z-index: 2;
+    top: 5px;
+    left: calc(100% - 43px);
+    padding: 0 4px;
+    /*min-width: 18px;*/
+    /*height: 18px;*/
+    text-align: center;
+    color: #fff;
+    border-radius: 18px;
+    border: 2px solid #fff;
+    background-color: red;
+}
 .header_class ul{
     display: flex;
     flex-direction: row;

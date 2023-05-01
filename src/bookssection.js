@@ -47,7 +47,10 @@ function showBooks(e,obj){
       const output = resultWrapper.querySelector(".resultOutput");
           data.items.forEach(book => {
           console.log(book.id);
-
+          var btnStatus="buy";
+          if (localStorage.getItem(book.id)!=null){
+            btnStatus = "in the cart";
+          }
          //console.log(book)
           const bookTemplate = `
             <div class="bookItem">
@@ -59,18 +62,14 @@ function showBooks(e,obj){
               <span class="bookItem_rateCnt">${checkItem(book.ratingsCount)}</span>
               <span class="bookItem_descr">${cropTitle(book.volumeInfo.description,80)}</span>
               <span class="bookItem_price">${checkItem(book.saleInfo.retailprice)}</span>
-              <button class="btnCart cart_${book.id}">buy</button>
+              <button class="btnCart" id="${book.id}">${btnStatus}</button>
               </div>
-
             </div>
           `;/**/
           output.innerHTML += bookTemplate;
-          btnCart=resultWrapper.querySelector(`.cart_${book.id}`)
-          btnCart.addEventListener ("click",onClickCartBtn);
-          /*()=> {console.log("listener");CheckCart(book.id); } , false);*/
-          console.log(btnCart);
-        });
+         });
      //const btn = '<button class="moreButton"> more...</button>'    
+     addCartBtn();
      addButton();
      startIndex=startIndex+6 ;
      //console.log('after show'+startIndex);
@@ -147,26 +146,24 @@ function addButton(){
     else{
       //console.log('button exists')   
       btn.classList.add("btnActive")  ;   
-    }
-    //btn.classList.add("btnActive")  ; 
-   
+    }   
   }
   
   
-  
+function addCartBtn (){
+  btns = resultWrapper.querySelectorAll(".btnCart")
+  btns.forEach((el)=> {el.addEventListener ("click",onClickCartBtn)
+});
+}
 
 function onClickBtn (e) {
-  //console.log(startIndex)
   e.preventDefault();
   obj=this;
-  //console.log(obj);
-   //console.log('func'+startIndex);
    showBooks(e,obj);
  }
  
 function changeCategory (obj) {
   const category=obj.parentElement;
-  //console.log(category.querySelector(".active"));
   if (category.querySelector(".active") != null ) {
     category.querySelector(".active").classList.remove("active");
    }
@@ -192,16 +189,23 @@ function showResultOutput() {
 
 function onClickCartBtn(e){
   e.preventDefault();
-  //check actions
-  //add to local storage
-  console.log("listen");
-  const id="231zxc";
-  localStorage.setItem("id","1");
-  console.log(localStorage.getItem(id));
-  //add to cart icon
-  //change btn status
- 
-  //remove from ls
-  //remove from icon
-  //change btn status
-}
+  const id=this.id;
+  console.log(id);
+  if ( localStorage.getItem(id)==null ) {
+    console.log('set');
+    localStorage.setItem(id,"1");
+    this.innerHTML= "in the cart";
+  } else {
+    console.log('remove')
+    localStorage.removeItem(id);
+    this.innerHTML= "buy";
+  }
+  addBookToCartIcon();
+  }
+  
+  
+  function addBookToCartIcon(){
+    console.log(1);
+    s=document.querySelector(".redEllipse");
+    console.log(s);
+  }
