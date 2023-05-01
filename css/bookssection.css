@@ -136,10 +136,18 @@ body {
 
 .btnCart{
   border: 1px solid #4C3DB2;
-  background-color: none;
+  background-color: white;
   width:fit-content;
+
   height:auto;
   margin: 5px 0 0 0;
+  height: 45px;
+  width: 176px;
+  border-radius: 0px;   
   /*align-self: left;*/
   display:block
+}
+
+.btnCart.inTheCart{
+  border: 1px solid #EEEDF5
 }

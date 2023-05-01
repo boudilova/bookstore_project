@@ -3,6 +3,8 @@ const apiUrl = "https://www.googleapis.com/books/v1/volumes/";
 
 //const form = document.querySelector(".searchForm");
 
+document.querySelector(".redEllipse").textContent=localStorage.length;
+//s.textContent=  1* s.textContent + act;
 
 const liEl = document.querySelectorAll(".liElement");
 const resultWrapper = document.querySelector(".resultWrapper");
@@ -47,9 +49,9 @@ function showBooks(e,obj){
       const output = resultWrapper.querySelector(".resultOutput");
           data.items.forEach(book => {
           console.log(book.id);
-          var btnStatus="buy";
+          var btnStatus="BUY NOW";
           if (localStorage.getItem(book.id)!=null){
-            btnStatus = "in the cart";
+            btnStatus = "IN THE CART";
           }
          //console.log(book)
           const bookTemplate = `
@@ -62,7 +64,7 @@ function showBooks(e,obj){
               <span class="bookItem_rateCnt">${checkItem(book.ratingsCount)}</span>
               <span class="bookItem_descr">${cropTitle(book.volumeInfo.description,80)}</span>
               <span class="bookItem_price">${checkItem(book.saleInfo.retailprice)}</span>
-              <button class="btnCart" id="${book.id}">${btnStatus}</button>
+              <button class="btnCart ${btnStatus=="IN THE CART"? "inTheCart":""}" id="${book.id}">${btnStatus}</button>
               </div>
             </div>
           `;/**/
@@ -190,22 +192,26 @@ function showResultOutput() {
 function onClickCartBtn(e){
   e.preventDefault();
   const id=this.id;
-  console.log(id);
+  console.log(this);
+  var act = 0;
   if ( localStorage.getItem(id)==null ) {
-    console.log('set');
-    localStorage.setItem(id,"1");
-    this.innerHTML= "in the cart";
+      console.log('set');
+      localStorage.setItem(id,"1");
+      this.innerHTML= "IN THE CART";
+      this.classList.add("inTheCart")
+      act=1;
   } else {
-    console.log('remove')
-    localStorage.removeItem(id);
-    this.innerHTML= "buy";
+      console.log('remove')
+      localStorage.removeItem(id);
+      this.innerHTML= "BUY NOW";
+      this.classList.remove("inTheCart")
+      act=-1;
   }
-  addBookToCartIcon();
+    addBookToCartIcon(act);
   }
-  
-  
-  function addBookToCartIcon(){
-    console.log(1);
+
+  function addBookToCartIcon(act) {
     s=document.querySelector(".redEllipse");
-    console.log(s);
+    s.textContent=  1* s.textContent + act;
+    //console.log(s.textContent);
   }
