@@ -10,6 +10,8 @@
   
   .slider__images {
     position: relative;
+    /*width: 100%;
+    height: auto;*/
     width: 1120px;
     height: 720px;
   }

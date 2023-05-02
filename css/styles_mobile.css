@@ -3,14 +3,14 @@
     justify-content: center;
   }
   */
-header {
+  header {
     display: flex;
     justify-content: space-between;
     height: 116px;
   }
   
 .wrapper{
-    width: 1220px;
+    width: 100%px;
     background-color: white;
 }
 
@@ -89,7 +89,7 @@ header {
 }
 
 .subjList{
-    margin-left: 100px;
+    margin-left: 5%;
     font-family: Montserrat;
     font-size: 12px;
     font-weight: 500;
@@ -101,12 +101,13 @@ header {
 }
 
 .subjList li{
-    padding:23px;
+    padding:2px;
 }
 
 .subjList li:hover{
     cursor: pointer;
 }
+
  li.active{
     font-family: Montserrat;
     font-size: 16px;
@@ -119,25 +120,25 @@ header {
 
 .ABS{
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
 }
 .rectangles{
     display:flex;
     flex-direction: column;
-    width: 150px;
+    /*width: 150px;*/
     /*margin:20px 0 0 -50px;*/
     justify-content: space-around;
     z-index: 1;
 }
-
 .rectangles a{
     color: black;
 }
 .violetRect{
     background-color: #9E98DC;
-    height: 33%;
-    margin-left: -100px;
-    margin-right: 100px;
+    /*height: 33%;*/
+    /*margin-left: -100px;
+    margin-right: 100px;*/
+    margin: 10px 10px 10px 10px;
     font-family: Montserrat;
     font-size: 18px;
     font-weight: 700;
@@ -146,14 +147,14 @@ header {
     text-align: left;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     text-transform: uppercase;
     flex-direction: column;
 }
 
 .pinkRect{
+    margin: 10px 10px 10px 10px;
     background-color: #FF8FE6;
-    height:40%;
     font-family: Montserrat;
     font-size: 18px;
     font-weight: 700;
@@ -163,6 +164,6 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    /*align-items: flex-end;*/
+    align-items: center;
     text-transform: uppercase;
 }

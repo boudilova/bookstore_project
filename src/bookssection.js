@@ -47,23 +47,25 @@ function showBooks(e,obj){
       //console.log(maxResult);
         clearResultOutput();
       const output = resultWrapper.querySelector(".resultOutput");
-          data.items.forEach(book => {
+
+      data.items.forEach(book => {
           console.log(book.id);
           var btnStatus="BUY NOW";
           if (localStorage.getItem(book.id)!=null){
             btnStatus = "IN THE CART";
           }
          //console.log(book)
-          const bookTemplate = `
+        //console.log(book.saleInfo.retailPrice)
+        
+         const bookTemplate = `
             <div class="bookItem">
               <img src=${checkImg(book.volumeInfo.imageLinks)} alt="${book.volumeInfo.title}" />
               <div class="bookInfo">
               <span class="bookItem_auth">${checkAuthors(book.volumeInfo.authors)}</span>
               <span class="bookItem_title">${checkItem(book.volumeInfo.title)}</span>
-              <span class="bookItem_avgrate">${checkRating(book.averageRating)}</span>
-              <span class="bookItem_rateCnt">${checkItem(book.ratingsCount)}</span>
+              <div class="bookItem_avgrate">${checkRating(book.volumeInfo.averageRating,book.volumeInfo.ratingsCount)}</div>
               <span class="bookItem_descr">${cropTitle(book.volumeInfo.description,80)}</span>
-              <span class="bookItem_price">${checkItem(book.saleInfo.retailprice)}</span>
+              <span class="bookItem_price">${checkPrice(book.saleInfo)}</span>
               <button class="btnCart ${btnStatus=="IN THE CART"? "inTheCart":""}" id="${book.id}">${btnStatus}</button>
               </div>
             </div>
@@ -72,7 +74,7 @@ function showBooks(e,obj){
          });
      //const btn = '<button class="moreButton"> more...</button>'    
      addCartBtn();
-     addButton();
+     addMoreButton();
      startIndex=startIndex+6 ;
      //console.log('after show'+startIndex);
      showResultOutput();
@@ -93,9 +95,21 @@ function checkImg(str){
    return res;
 }
 
-function checkRating(str){
-
-return str;
+function checkRating(num, rvw){
+var rev=''
+if(rvw>0){
+  rev=' '+rvw+ ' reviews'
+}
+  const str1=`
+<div class="ratingStars">
+<div ${num>1 ? 'class="filledStar"' :'' }>★</div>
+<div ${num>2 ? 'class="filledStar"' :'' }>★</div>
+<div ${num>3 ? 'class="filledStar"' :'' }>★</div>
+<div ${num>4 ? 'class="filledStar"' :'' }>★</div>
+<div ${num>=5 ? 'class="filledStar"' :'' }>★</div>
+<span class="bookItem_rateCnt"> ${rev} </span>
+</div>`
+return str1;
 }
 
 function checkAuthors(str){
@@ -112,7 +126,14 @@ function checkAuthors(str){
 }
   return res;
 };
-
+function checkPrice(obj){
+if (typeof(obj.retailPrice)!=='undefined' ){
+  return obj.retailPrice.amount + ' '+ obj.retailPrice.currencyCode;
+ } else {
+  return ''//obj.saleInfo.saleability;
+ }
+ 
+}
 function checkItem(str) {
   if (typeof(str)=="undefined"){
     str="";
@@ -132,13 +153,13 @@ function cropTitle(str, size) {
   }
 }
 
-function addButton(){
+function addMoreButton(){
   const btn = resultWrapper.querySelector(".btnMore");
   //console.log(btn);
   if (btn===null){
     //console.log('no button')
     const btn = document.createElement("button");
-    btn.textContent="Show next pack";
+    btn.textContent="LOAD MORE";
     resultWrapper.appendChild(btn); 
     btn.className="btnMore"  ;
     btn.classList.add("btnActive"); 
@@ -215,3 +236,5 @@ function onClickCartBtn(e){
     s.textContent=  1* s.textContent + act;
     //console.log(s.textContent);
   }
+
+  

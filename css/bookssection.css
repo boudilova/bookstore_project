@@ -101,6 +101,7 @@ body {
   text-align: left;  
   color: #1C2A39;
 }
+
 .bookItem_descr{
   font-family: Open Sans;
   font-size: 10px;
@@ -110,6 +111,7 @@ body {
   text-align: left;
   color: #1C2A39;
   }
+
 .bookItem_price{
   font-family: Montserrat;
   font-size: 13px;
@@ -118,6 +120,7 @@ body {
   letter-spacing: 0em;
   text-align: left;
   color: #1C2A39;
+  margin: 8px 0 8px 0;
 }
 .bookItem img{
   max-height: 327px;
@@ -129,9 +132,14 @@ body {
 }
 .btnMore.btnActive{
   border: 1px solid #4C3DB2;
-  background-color: none;
   align-self: center;
-  display:block
+  display:block;
+  background-color: white;
+  
+  margin: 5px 0 0 0;
+  height: 45px;
+  width: 176px;
+ 
 }
 
 .btnCart{
@@ -150,4 +158,13 @@ body {
 
 .btnCart.inTheCart{
   border: 1px solid #EEEDF5
+}
+
+.ratingStars{
+  align-items: center;
+  color: lightgrey;
+  display: flex;
+}
+.filledStar{
+  color: gold;
 }
